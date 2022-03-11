@@ -15,7 +15,8 @@ def start(update: Update, context: CallbackContext):
 
 def help(update: Update, context: CallbackContext):
 	update.message.reply_text("""Available Commands :-
-	/linkedin - To get the LinkedIn profile URL""")
+	/linkedin - To get the LinkedIn profile URL
+	/website - To get the website URL""")
 
 
 def linkedIn_url(update: Update, context: CallbackContext):
