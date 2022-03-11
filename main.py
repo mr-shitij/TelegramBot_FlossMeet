@@ -15,8 +15,10 @@ def start(update: Update, context: CallbackContext):
 
 def help(update: Update, context: CallbackContext):
 	update.message.reply_text("""Available Commands :-
+	/floss22 - To get the information about flossMeet22
 	/linkedin - To get the LinkedIn profile URL
-	/website - To get the website URL""")
+	/website - To get the website URL
+	Just ask what is floss ? to know about it...""")
 
 
 def linkedIn_url(update: Update, context: CallbackContext):
@@ -67,8 +69,8 @@ def unknown_text(update: Update, context: CallbackContext):
 updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CommandHandler('linkedin', linkedIn_url))
 updater.dispatcher.add_handler(CommandHandler('website', website))
+updater.dispatcher.add_handler(CommandHandler('floss22', flossMeet22))
 updater.dispatcher.add_handler(CommandHandler('help', help))
-updater.dispatcher.add_handler(CommandHandler('floss22', help))
 updater.dispatcher.add_handler(MessageHandler(Filters.text, unknown))
 updater.dispatcher.add_handler(MessageHandler(Filters.command, unknown))  # Filters out unknown commands
 
