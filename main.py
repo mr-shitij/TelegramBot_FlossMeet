@@ -35,7 +35,7 @@ def what_is_flossMeet(update: Update, context: CallbackContext):
 
 def flossMeet22(update: Update, context: CallbackContext):
 	update.message.reply_photo(
-		photo="https://raw.githubusercontent.com/mr-shitij/TelegramBot_FlossMeet/master/assets/flossmeet22.jpeg?token=GHSAT0AAAAAABQYUSJIHLLAR77LVUBQLVXEYRLDG2A",
+		photo="https://raw.githubusercontent.com/mr-shitij/TelegramBot_FlossMeet/master/assets/flossmeet22.jpeg?token=GHSAT0AAAAAABQYUSJIXHFSPQQHIW344PEQYRLDYQA",
 		caption="The 4th Edition of COEP FLOSSMeet’22 organized by CoFSUG is almost here!"
 				"🤩🔥If you want to witness one of the greatest events held in India for "
 				"the spread and awareness of free, libre, and open-source software, this is "
