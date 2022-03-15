@@ -9,22 +9,26 @@ updater = Updater("5225088042:AAEn2gQf5qgRYyWxTbvFHaGKVrnjiSJvk2M", use_context=
 
 
 def start(update: Update, context: CallbackContext):
-	update.message.reply_text("Hello sir, Welcome to the COEP FLOSSMEET'22.Please write\
-		/help to see the commands available.")
+	update.message.reply_text("Hello sir,\n Welcome to the COEP FLOSSMEET'22."
+							  "\n Please write /help to see the commands available.")
+
+
+def schedule(update: Update, context: CallbackContext):
+	update.message.reply_text("Coming Very Soon.")
+
+
+def join(update: Update, context: CallbackContext):
+	update.message.reply_text("Register for FLOSSMEET'22 => https://www.townscript.com/e/flossmeet22-204311")
 
 
 def help(update: Update, context: CallbackContext):
 	update.message.reply_text("""Available Commands :-
+	/start - To get started
+	/join - To join FLOSSMEET'22 on 26th and 27th of March, 2022 🗓
 	/floss22 - To get the information about flossMeet22
-	/linkedin - To get the LinkedIn profile URL
-	/website - To get the website URL
+	/reach - To get the our social media outlet
+	/schedule - To get the schedule
 	Just ask what is floss ? to know about it...""")
-
-
-def linkedIn_url(update: Update, context: CallbackContext):
-	update.message.reply_text(
-		"LinkedIn URL => \
-		https://www.linkedin.com/company/coep-fossmeet21/")
 
 
 def what_is_flossMeet(update: Update, context: CallbackContext):
@@ -46,10 +50,10 @@ def flossMeet22(update: Update, context: CallbackContext):
 				"to register and join us on the 26th and 27th of March, 2022. 🗓")
 
 
-def website(update: Update, context: CallbackContext):
+def social(update: Update, context: CallbackContext):
 	update.message.reply_text(
-		"Website URL => \
-		https://foss.coep.org.in/flossmeet/flossmeet22/")
+		"Linkedin URL => https://www.linkedin.com/company/coep-fossmeet21/, \n"
+		"Website URL => https://foss.coep.org.in/flossmeet/flossmeet22/")
 
 
 def unknown(update: Update, context: CallbackContext):
@@ -67,8 +71,9 @@ def unknown_text(update: Update, context: CallbackContext):
 
 
 updater.dispatcher.add_handler(CommandHandler('start', start))
-updater.dispatcher.add_handler(CommandHandler('linkedin', linkedIn_url))
-updater.dispatcher.add_handler(CommandHandler('website', website))
+updater.dispatcher.add_handler(CommandHandler('reach', social))
+updater.dispatcher.add_handler(CommandHandler('schedule', schedule))
+updater.dispatcher.add_handler(CommandHandler('join', join))
 updater.dispatcher.add_handler(CommandHandler('floss22', flossMeet22))
 updater.dispatcher.add_handler(CommandHandler('help', help))
 updater.dispatcher.add_handler(MessageHandler(Filters.text, unknown))
