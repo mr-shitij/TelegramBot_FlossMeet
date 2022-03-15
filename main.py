@@ -51,25 +51,28 @@ def what_is_flossMeet(update: Update, context: CallbackContext):
 
 
 def flossMeet22(update: Update, context: CallbackContext):
-	update.callback_query.message.reply_photo(
-		photo="https://raw.githubusercontent.com/mr-shitij/TelegramBot_FlossMeet/master/assets/flossmeet22.jpeg?token=GHSAT0AAAAAABQYUSJIXHFSPQQHIW344PEQYRLDYQA",
-		caption="The 4th Edition of COEP FLOSSMeet’22 organized by CoFSUG is almost here!"
-				"🤩🔥If you want to witness one of the greatest events held in India for "
-				"the spread and awareness of free, libre, and open-source software, this is "
-				"the perfect event for you. Our registrations are opening soon make sure "
-				"you do not miss out on this amazing opportunity. 💻💯There are no branch "
-				"restrictions  or age barriers💫. If you have the desire to learn more and "
-				"contribute to the FLOSS world🐧 make sure "
-				"to register and join us on the 26th and 27th of March, 2022. 🗓",
-		reply_markup=main_menu_keyboard()
+	update.callback_query.message.reply_text(
+		text="The 4th Edition of COEP FLOSSMeet’22 organized by CoFSUG is almost here!🤩🔥"
+			 "If you want to witness one of the greatest events held in India for the spread and "
+			 "awareness of free, libre, and open-source software, this is the perfect event for you."
+			 " Our registrations are open now Make sure you do not miss out on this amazing opportunity. "
+			 "💻💯There are no branch restrictions  or age barriers💫. If you have the desire to learn more and"
+			 " contribute to the FLOSS world🐧 make sure to register and join us on the 26th and 27th of March, 2022. \n\n"
+			 "🗓<b>Visit our site for more information:</b>\n\n"
+			 "https://foss.coep.org.in/flossmeet/flossmeet22/",
+		reply_markup=main_menu_keyboard(),
+		parse_mode=ParseMode.HTML
 	)
 
 
 def social(update: Update, context: CallbackContext):
 	update.callback_query.message.reply_text(
-		text="Linkedin URL => https://www.linkedin.com/company/coep-fossmeet21/, \n"
-			 "Website URL => https://foss.coep.org.in/flossmeet/flossmeet22/",
-		reply_markup=main_menu_keyboard()
+		text="<b>Follow Us:</b>\n"
+			 "🔸 <b>LinkedIn:</b> https://www.linkedin.com/company/coep-fossmeet21\n\n"
+			 "🔸 <b>Instagram:</b> https://www.instagram.com/coep_flossmeet/\n\n"
+			 "🔸 <b>Telegram:</b> https://t.me/+F6TTbsAfLMU5N2E1\n",
+		reply_markup=main_menu_keyboard(),
+		parse_mode=ParseMode.HTML
 	)
 
 
