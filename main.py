@@ -14,7 +14,7 @@ def main_menu_keyboard():
 	keyboard = [[InlineKeyboardButton('REGISTER', callback_data='register')],
 				[InlineKeyboardButton('SCHEDULE', callback_data='schedule')],
 				[InlineKeyboardButton('REACH US', callback_data='reach')],
-				[InlineKeyboardButton('FLOSS 22', callback_data='floss22')]]
+				[InlineKeyboardButton('FLOSSMeet\'22', callback_data='floss22')]]
 	return InlineKeyboardMarkup(keyboard)
 
 
