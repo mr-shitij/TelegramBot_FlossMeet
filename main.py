@@ -32,7 +32,7 @@ def schedule(update: Update, context: CallbackContext):
 
 def register(update: Update, context: CallbackContext):
 	update.callback_query.message.reply_photo(
-		photo="https://raw.githubusercontent.com/mr-shitij/TelegramBot_FlossMeet/master/assets/register.jpeg?token=GHSAT0AAAAAABQYUSJIHLLAR77LVUBQLVXEYRLDG2A",
+		photo="https://raw.githubusercontent.com/mr-shitij/TelegramBot_FlossMeet/master/assets/register.jpeg?token=GHSAT0AAAAAABQYUSJIJ3FKCBTZ4NRMB6CYYRQ6WLA",
 		caption="*IF YOU WANT TO BE THERE FOR EVENT!*\n"
 			 "If you wish to be a part of the event and "
 			 "enjoy the awesome sessions which we will have conduct,"
