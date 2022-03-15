@@ -1,4 +1,4 @@
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import CallbackQueryHandler
 from telegram.ext.updater import Updater
 from telegram.update import Update
@@ -11,10 +11,10 @@ updater = Updater("5225088042:AAEn2gQf5qgRYyWxTbvFHaGKVrnjiSJvk2M", use_context=
 
 
 def main_menu_keyboard():
-	keyboard = [[InlineKeyboardButton('join', callback_data='join')],
-				[InlineKeyboardButton('schedule', callback_data='schedule')],
-				[InlineKeyboardButton('reach us', callback_data='reach')],
-				[InlineKeyboardButton('floss 22', callback_data='floss22')]]
+	keyboard = [[InlineKeyboardButton('REGISTER', callback_data='register')],
+				[InlineKeyboardButton('SCHEDULE', callback_data='schedule')],
+				[InlineKeyboardButton('REACH US', callback_data='reach')],
+				[InlineKeyboardButton('FLOSS 22', callback_data='floss22')]]
 	return InlineKeyboardMarkup(keyboard)
 
 
@@ -30,10 +30,17 @@ def schedule(update: Update, context: CallbackContext):
 		reply_markup=main_menu_keyboard())
 
 
-def join(update: Update, context: CallbackContext):
-	update.callback_query.message.reply_text(
-		text="Register for FLOSSMEET'22 => https://www.townscript.com/e/flossmeet22-204311",
-		reply_markup=main_menu_keyboard())
+def register(update: Update, context: CallbackContext):
+	update.callback_query.message.reply_photo(
+		photo="https://raw.githubusercontent.com/mr-shitij/TelegramBot_FlossMeet/master/assets/register.jpeg?token=GHSAT0AAAAAABQYUSJIHLLAR77LVUBQLVXEYRLDG2A",
+		caption="*IF YOU WANT TO BE THERE FOR EVENT!*\n"
+			 "If you wish to be a part of the event and "
+			 "enjoy the awesome sessions which we will have conduct,"
+			 " register now and stay tuned to get timely updates.\n"
+			 " *Click here to register:*\n"
+			 " https://www.townscript.com/e/flossmeet22-204311",
+		reply_markup=main_menu_keyboard(),
+		parse_mode=ParseMode.MARKDOWN)
 
 
 def what_is_flossMeet(update: Update, context: CallbackContext):
@@ -89,7 +96,7 @@ def unknown_text(update: Update, context: CallbackContext):
 updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CallbackQueryHandler(social, pattern="reach"))
 updater.dispatcher.add_handler(CallbackQueryHandler(schedule, pattern="schedule"))
-updater.dispatcher.add_handler(CallbackQueryHandler(join, pattern="join"))
+updater.dispatcher.add_handler(CallbackQueryHandler(register, pattern="register"))
 updater.dispatcher.add_handler(CallbackQueryHandler(flossMeet22, pattern="floss22"))
 updater.dispatcher.add_handler(MessageHandler(Filters.text, unknown))
 updater.dispatcher.add_handler(MessageHandler(Filters.command, unknown))  # Filters out unknown commands
