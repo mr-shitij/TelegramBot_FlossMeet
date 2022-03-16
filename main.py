@@ -14,13 +14,14 @@ def main_menu_keyboard():
 	keyboard = [[InlineKeyboardButton('REGISTER', callback_data='register')],
 				[InlineKeyboardButton('SCHEDULE', callback_data='schedule')],
 				[InlineKeyboardButton('REACH US', callback_data='reach')],
+				[InlineKeyboardButton('WHAT IS FLOSS?', callback_data='what_is_floss')],
 				[InlineKeyboardButton('FLOSSMeet\'22', callback_data='floss22')]]
 	return InlineKeyboardMarkup(keyboard)
 
 
 def start(update: Update, context: CallbackContext):
 	update.message.reply_text(
-		text="Hello sir,\n Welcome to the COEP FLOSSMEET'22.\n Please Choose the option menu",
+		text="Hello " + update.message.from_user.first_name +",\n Welcome to the COEP FLOSSMEET'22.\n Please Choose the option menu",
 		reply_markup=main_menu_keyboard())
 
 
@@ -43,10 +44,12 @@ def register(update: Update, context: CallbackContext):
 		parse_mode=ParseMode.MARKDOWN)
 
 
-def what_is_flossMeet(update: Update, context: CallbackContext):
-	update.message.reply_photo(
-		photo="https://raw.githubusercontent.com/mr-shitij/TelegramBot_FlossMeet/master/assets/flossmeet.jpeg?token=GHSAT0AAAAAABQYUSJIHLLAR77LVUBQLVXEYRLDG2A",
-		caption="It's all about free and open source software",
+def what_is_floss(update: Update, context: CallbackContext):
+	update.callback_query.message.reply_text(
+		text="Floss in 2 min \n https://youtu.be/MtNcxMuphLc\n\n"
+			"FOSS United \n https://www.youtube.com/watch?v=iXL1j_lUUB8\n\n"
+			"Read About Open Source \n https://www.gnu.org/philosophy/open-source-misses-the-point.html\n\n"
+			"This is the most detailed one in case you wanna dive deeper \n https://youtu.be/n9YDz-Iwgyw\n",
 		reply_markup=main_menu_keyboard())
 
 
@@ -78,7 +81,7 @@ def social(update: Update, context: CallbackContext):
 
 def unknown(update: Update, context: CallbackContext):
 	if "floss" in update.message.text and "what" in update.message.text:
-		what_is_flossMeet(update, context)
+		what_is_floss(update, context)
 
 	else:
 		update.callback_query.message.reply_text(
@@ -101,6 +104,7 @@ updater.dispatcher.add_handler(CallbackQueryHandler(social, pattern="reach"))
 updater.dispatcher.add_handler(CallbackQueryHandler(schedule, pattern="schedule"))
 updater.dispatcher.add_handler(CallbackQueryHandler(register, pattern="register"))
 updater.dispatcher.add_handler(CallbackQueryHandler(flossMeet22, pattern="floss22"))
+updater.dispatcher.add_handler(CallbackQueryHandler(what_is_floss, pattern="what_is_floss"))
 updater.dispatcher.add_handler(MessageHandler(Filters.text, unknown))
 updater.dispatcher.add_handler(MessageHandler(Filters.command, unknown))  # Filters out unknown commands
 
