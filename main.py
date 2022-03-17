@@ -1,11 +1,9 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import CallbackQueryHandler
-from telegram.ext.updater import Updater
-from telegram.update import Update
 from telegram.ext.callbackcontext import CallbackContext
 from telegram.ext.commandhandler import CommandHandler
-from telegram.ext.messagehandler import MessageHandler
-from telegram.ext.filters import Filters
+from telegram.ext.updater import Updater
+from telegram.update import Update
 
 updater = Updater("5225088042:AAEn2gQf5qgRYyWxTbvFHaGKVrnjiSJvk2M", use_context=True)
 
@@ -21,7 +19,7 @@ def main_menu_keyboard():
 
 def start(update: Update, context: CallbackContext):
 	update.message.reply_text(
-		text="Hello " + update.message.from_user.first_name +",\n Welcome to the COEP FLOSSMEET'22.\n Please Choose the option menu",
+		text="Hello " + update.message.from_user.first_name +",\n Welcome to the COEP FLOSSMEET'22.\n Please Choose from the option menu",
 		reply_markup=main_menu_keyboard())
 
 
@@ -46,11 +44,13 @@ def register(update: Update, context: CallbackContext):
 
 def what_is_floss(update: Update, context: CallbackContext):
 	update.callback_query.message.reply_text(
-		text="Floss in 2 min \n https://youtu.be/MtNcxMuphLc\n\n"
-			"FOSS United \n https://www.youtube.com/watch?v=iXL1j_lUUB8\n\n"
-			"Read About Open Source \n https://www.gnu.org/philosophy/open-source-misses-the-point.html\n\n"
-			"This is the most detailed one in case you wanna dive deeper \n https://youtu.be/n9YDz-Iwgyw\n",
-		reply_markup=main_menu_keyboard())
+		text="<b>Floss in 2 min</b> \n https://youtu.be/MtNcxMuphLc\n\n"
+			"<b>FOSS United</b> \n https://www.youtube.com/watch?v=iXL1j_lUUB8\n\n"
+			"<b>Read About Open Source</b> \n https://www.gnu.org/philosophy/open-source-misses-the-point.html\n\n"
+			"<b>Ted Talk by founder of GNU, Richard Stallman</b> \n https://audio-video.gnu.org/video/TEDxGE2014_Stallman05_LQ.webm\n\n"
+			"<b>A Deeper Dive</b> \n https://youtu.be/n9YDz-Iwgyw\n",
+		reply_markup=main_menu_keyboard(),
+		parse_mode=ParseMode.HTML)
 
 
 def flossMeet22(update: Update, context: CallbackContext):
@@ -79,17 +79,6 @@ def social(update: Update, context: CallbackContext):
 	)
 
 
-def unknown(update: Update, context: CallbackContext):
-	if "floss" in update.message.text and "what" in update.message.text:
-		what_is_floss(update, context)
-
-	else:
-		update.callback_query.message.reply_text(
-			text="Sorry '%s' is not a valid command" % update.message.text,
-			reply_markup=main_menu_keyboard()
-		)
-
-
 def error(update, context):
 	print(f'Update {update} caused error {context.error}')
 
@@ -105,11 +94,8 @@ updater.dispatcher.add_handler(CallbackQueryHandler(schedule, pattern="schedule"
 updater.dispatcher.add_handler(CallbackQueryHandler(register, pattern="register"))
 updater.dispatcher.add_handler(CallbackQueryHandler(flossMeet22, pattern="floss22"))
 updater.dispatcher.add_handler(CallbackQueryHandler(what_is_floss, pattern="what_is_floss"))
-updater.dispatcher.add_handler(MessageHandler(Filters.text, unknown))
-updater.dispatcher.add_handler(MessageHandler(Filters.command, unknown))  # Filters out unknown commands
 
 # Filters out unknown messages and error messages.
-updater.dispatcher.add_handler(MessageHandler(Filters.text, unknown_text))
 updater.dispatcher.add_error_handler(error)
 
 updater.start_polling()
