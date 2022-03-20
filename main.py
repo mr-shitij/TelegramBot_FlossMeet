@@ -85,7 +85,7 @@ def error(update, context):
 
 def unknown_text(update: Update, context: CallbackContext):
 	update.callback_query.message.edit_text(
-		"Sorry I can't recognize you , you said '%s'" % update.message.text)
+		"Sorry I can't recognize you, you said '%s'" % update.message.text)
 
 
 updater.dispatcher.add_handler(CommandHandler('start', start))
