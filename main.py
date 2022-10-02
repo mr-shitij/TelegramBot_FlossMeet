@@ -5,7 +5,7 @@ from telegram.ext.commandhandler import CommandHandler
 from telegram.ext.updater import Updater
 from telegram.update import Update
 
-updater = Updater("5225088042:AAEn2gQf5qgRYyWxTbvFHaGKVrnjiSJvk2M", use_context=True)
+updater = Updater("", use_context=True)
 
 
 def main_menu_keyboard():
